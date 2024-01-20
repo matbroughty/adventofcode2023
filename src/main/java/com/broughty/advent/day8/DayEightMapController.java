@@ -20,7 +20,8 @@ public class DayEightMapController {
     String getTotal() {
         logger.info("Day Eight - move through map");
         long movesToZZZ = mapMovementCalculator.mapMoveCount();
-        return STR."Moves to ZZZ Part One: \{movesToZZZ}";
+        long movesPartTwo = mapMovementCalculator.mapMoveCountGhost();
+        return STR."Moves to ZZZ Part One: \{movesToZZZ} and ghost move is \{movesPartTwo}";
     }
 
 

@@ -20,12 +20,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestPropertySource("classpath:application.properties")
 class MapMovementCalculatorTest {
 
-    @Value("${advent.day8File}")
-    String fileUrl;
-    @Value("${advent.cookie}")
-    String cookie;
-
-    private MapMovementCalculator mapMovementCalculator;
     private final static String EXAMPLE_MAP_DATA = """
             LLR
 
@@ -33,7 +27,18 @@ class MapMovementCalculatorTest {
             BBB = (AAA, ZZZ)
             ZZZ = (ZZZ, ZZZ)
                         """;
+    private final static String EXAMPLE_GHOST_DATA = """
+            LR
 
+            11A = (11B, XXX)
+            11B = (XXX, 11Z)
+            11Z = (11B, XXX)
+            22A = (22B, XXX)
+            22B = (22C, 22C)
+            22C = (22Z, 22Z)
+            22Z = (22B, 22B)
+            XXX = (XXX, XXX)
+                        """;
     private final static String ACTUAL_DATA_PT1 = """
             LRLLLRRLRRLRRLRRLLRRLRRLLRRRLLRRLRRLRRLRRLRLRLLLLLRRLRRLLRLRRRLLRRLRLLLLLLLRRLRLRRRLRRLRRRLRRLLLRRLLRRRLLRRRLRRLRLRRRLRRRLRLRLLRRRLRRRLRRLLRRRLRLRRLLRLLRRLLRRLRRRLRRLRLRRLLRRRLRRRLRRRLRLRLRLRRRLLRRRLRLRRLLRRLRRLRRLRLLRRLLRRRLRRRLRRLRRLRLLRRLRLRRLRRRLRRRLRRLRLRRRLRRRLRLLLRRLRLLRRRR
 
@@ -756,6 +761,11 @@ class MapMovementCalculatorTest {
             XLM = (CTR, HNK)
             NQN = (SJT, BFL)
                                     """;
+    @Value("${advent.day8File}")
+    String fileUrl;
+    @Value("${advent.cookie}")
+    String cookie;
+    private MapMovementCalculator mapMovementCalculator;
 
     @BeforeEach
     public void init() {
@@ -773,7 +783,7 @@ class MapMovementCalculatorTest {
     }
 
     @Test
-    public void testActualDataPartOne(){
+    public void testActualDataPartOne() {
         Reader inputString = new StringReader(ACTUAL_DATA_PT1);
         BufferedReader reader = new BufferedReader(inputString);
 
@@ -783,8 +793,24 @@ class MapMovementCalculatorTest {
     }
 
     @Test
-    public void testActualDataPartTwo(){
+    public void testActualDataPartTwo() {
+        Reader inputString = new StringReader(ACTUAL_DATA_PT1);
+        BufferedReader reader = new BufferedReader(inputString);
 
+        mapMovementCalculator = new MapMovementCalculator(fileUrl);
+        mapMovementCalculator.setFileLines(reader.lines().toList());
+        assertEquals(10818234074807L, mapMovementCalculator.mapMoveCountGhost());
+
+    }
+
+    @Test
+    public void testExampleGhostMapDataPartTwo() {
+        Reader inputString = new StringReader(EXAMPLE_GHOST_DATA);
+        BufferedReader reader = new BufferedReader(inputString);
+
+        mapMovementCalculator = new MapMovementCalculator(fileUrl);
+        mapMovementCalculator.setFileLines(reader.lines().toList());
+        assertEquals(6, mapMovementCalculator.mapMoveCountGhost());
 
     }
 
