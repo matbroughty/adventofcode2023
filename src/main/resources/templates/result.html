@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <title th:text="'Advent Day Results for : ' + ${adventDayResult.adventDay()}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1 th:text="'Result : ' + ${adventDayResult.adventDay()}"/>
+<p th:text="'Part One: ' + ${adventDayResult.partOne()}"/>
+<p th:text="'Part Two: ' + ${adventDayResult.partTwo()}"/>
+<a th:href="${adventDayResult.adventUrl()}">Advent Url Link</a>
+<hr/>
+<a href="/advent">Choose another day</a>
+<hr/>
+</body>
+</html>

@@ -1,6 +1,6 @@
 package com.broughty.advent.day4;
 
-import com.broughty.advent.common.AdventUrlReader;
+import com.broughty.advent.common.AdventCalculator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 @Component
-public class ScratchCardsCalculator extends AdventUrlReader {
+public class ScratchCardsCalculator extends AdventCalculator {
 
     List<CardGame> games;
 

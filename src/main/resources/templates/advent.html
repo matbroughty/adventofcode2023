@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <title>Choose Advent Day</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Advent Day</h1>
+
+<form th:action="@{/advent}" method="post">
+    <div class="dayList" th:object="${adventDay}">
+        <select class="form-control" id="advent-days" name="adventDay">
+            <option th:each="adventDay : ${adventDays}"
+                    th:value="${adventDay}"
+                    th:text="${adventDay}">
+            </option>
+        </select>
+        <input type="hidden"/>
+        <button type="submit">Submit Advent Day</button>
+
+    </div>
+</form>
+</body>
+</html>

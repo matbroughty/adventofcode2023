@@ -35,7 +35,7 @@ public record CardGame(String cardGameLine, int cardWins) {
         AtomicInteger wins = new AtomicInteger(0);
 
 
-        logger.info("selected numbers length is {}", split(selectedNumbers).length);
+        logger.debug("selected numbers length is {}", split(selectedNumbers).length);
 
         Arrays.stream(split(selectedNumbers)).forEach(num -> {
             if (winners.contains(Integer.parseInt(num))) {

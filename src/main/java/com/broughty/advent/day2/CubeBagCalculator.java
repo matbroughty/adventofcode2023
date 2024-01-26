@@ -1,7 +1,7 @@
 package com.broughty.advent.day2;
 
 
-import com.broughty.advent.common.AdventUrlReader;
+import com.broughty.advent.common.AdventCalculator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +12,7 @@ import static com.broughty.advent.day2.Colour.*;
 import static org.apache.commons.lang3.StringUtils.*;
 
 @Component
-public class CubeBagCalculator extends AdventUrlReader {
+public class CubeBagCalculator extends AdventCalculator {
 
     CubeBagCalculator(@Value("${advent.day2File}") String file) {
         super(file);

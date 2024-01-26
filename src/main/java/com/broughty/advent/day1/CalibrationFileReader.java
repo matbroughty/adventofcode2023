@@ -1,7 +1,7 @@
 package com.broughty.advent.day1;
 
 
-import com.broughty.advent.common.AdventUrlReader;
+import com.broughty.advent.common.AdventCalculator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
 @Component
-public class CalibrationFileReader extends AdventUrlReader {
+public class CalibrationFileReader extends AdventCalculator {
 
 
     CalibrationFileReader(@Value("${advent.day1File}") String file) {

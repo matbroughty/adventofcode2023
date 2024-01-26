@@ -24,6 +24,8 @@ each advent day).
 ### Running
 The advent code can be run as either tests or as a web application.
 
+The web application uses the Strategy Pattern (implemented by [Spring Plugin](https://github.com/spring-projects/spring-plugin))
+to get each day as a plugin and display via Thymeleaf
 
 **Note:** Some of the earlier advent days tests (before day 5) used the cookie and live data but
 decided after this to copy the data into the tests

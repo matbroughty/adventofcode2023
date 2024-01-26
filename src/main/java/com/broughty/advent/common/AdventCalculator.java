@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class AdventUrlReader {
+public abstract class AdventCalculator {
 
-    public static final Logger logger = LoggerFactory.getLogger(AdventUrlReader.class);
+    public static final Logger logger = LoggerFactory.getLogger(AdventCalculator.class);
     /**
      * The file lines read in from the input fieUrl
      */
@@ -30,7 +30,7 @@ public abstract class AdventUrlReader {
      */
     String cookie;
 
-    public AdventUrlReader(String file) {
+    public AdventCalculator(String file) {
         this.fileUrl = file;
     }
 

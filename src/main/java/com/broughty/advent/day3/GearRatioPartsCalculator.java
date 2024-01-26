@@ -1,6 +1,6 @@
 package com.broughty.advent.day3;
 
-import com.broughty.advent.common.AdventUrlReader;
+import com.broughty.advent.common.AdventCalculator;
 import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -12,7 +12,7 @@ import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Component
-public class GearRatioPartsCalculator extends AdventUrlReader {
+public class GearRatioPartsCalculator extends AdventCalculator {
 
     public GearRatioPartsCalculator(@Value("${advent.day3File}") String file) {
         super(file);

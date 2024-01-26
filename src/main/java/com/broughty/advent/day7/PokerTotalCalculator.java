@@ -1,6 +1,6 @@
 package com.broughty.advent.day7;
 
-import com.broughty.advent.common.AdventUrlReader;
+import com.broughty.advent.common.AdventCalculator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +13,7 @@ import static org.apache.commons.lang3.StringUtils.substringAfter;
 import static org.apache.commons.lang3.StringUtils.substringBefore;
 
 @Component
-public class PokerTotalCalculator extends AdventUrlReader {
+public class PokerTotalCalculator extends AdventCalculator {
 
     public PokerTotalCalculator(@Value("${advent.day7File}") String file) {
         super(file);

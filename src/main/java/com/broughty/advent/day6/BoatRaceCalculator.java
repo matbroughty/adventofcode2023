@@ -1,6 +1,6 @@
 package com.broughty.advent.day6;
 
-import com.broughty.advent.common.AdventUrlReader;
+import com.broughty.advent.common.AdventCalculator;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,7 +12,7 @@ import java.util.List;
 import static org.apache.commons.lang3.StringUtils.trim;
 
 @Component
-public class BoatRaceCalculator extends AdventUrlReader {
+public class BoatRaceCalculator extends AdventCalculator {
 
 
     public BoatRaceCalculator(@Value("${advent.day6File}") String file) {

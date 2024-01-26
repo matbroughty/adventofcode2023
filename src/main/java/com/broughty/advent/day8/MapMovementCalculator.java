@@ -1,6 +1,6 @@
 package com.broughty.advent.day8;
 
-import com.broughty.advent.common.AdventUrlReader;
+import com.broughty.advent.common.AdventCalculator;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.Logger;
@@ -13,7 +13,7 @@ import java.util.*;
 import static org.apache.commons.lang3.StringUtils.*;
 
 @Component
-public class MapMovementCalculator extends AdventUrlReader {
+public class MapMovementCalculator extends AdventCalculator {
 
 
     ArrayDeque<String> moves;
@@ -25,6 +25,24 @@ public class MapMovementCalculator extends AdventUrlReader {
         super(file);
     }
 
+    private static long gcd(long a, long b) {
+        while (b > 0) {
+            long temp = b;
+            b = a % b; // % is remainder
+            a = temp;
+        }
+        return a;
+    }
+
+    private static long lcm(long a, long b) {
+        return a * (b / gcd(a, b));
+    }
+
+    private static long lcm(long[] input) {
+        long result = input[0];
+        for (int i = 1; i < input.length; i++) result = lcm(result, input[i]);
+        return result;
+    }
 
     public void initData() {
         moves = readMoves();
@@ -37,7 +55,6 @@ public class MapMovementCalculator extends AdventUrlReader {
         long[] routes = elements.stream().map(e -> moveCount(e, "Z")).mapToLong(Integer::longValue).toArray();
         return lcm(routes);
     }
-
 
     public int mapMoveCount() {
         initData();
@@ -65,7 +82,6 @@ public class MapMovementCalculator extends AdventUrlReader {
         return movement.equals("L") ? map.get(element).getLeft() : map.get(element).getRight();
     }
 
-
     Map<String, Pair<String, String>> loadMap() {
         Map<String, Pair<String, String>> map = new HashMap<>();
         getFileLines().subList(2, getFileLines().size()).forEach(str -> {
@@ -83,29 +99,5 @@ public class MapMovementCalculator extends AdventUrlReader {
         ArrayDeque<String> moves = new ArrayDeque<>();
         getFileLines().getFirst().chars().mapToObj(c -> (char) c).forEach(character -> moves.offer(character.toString()));
         return moves;
-    }
-
-
-    private static long gcd(long a, long b)
-    {
-        while (b > 0)
-        {
-            long temp = b;
-            b = a % b; // % is remainder
-            a = temp;
-        }
-        return a;
-    }
-
-    private static long lcm(long a, long b)
-    {
-        return a * (b / gcd(a, b));
-    }
-
-    private static long lcm(long[] input)
-    {
-        long result = input[0];
-        for(int i = 1; i < input.length; i++) result = lcm(result, input[i]);
-        return result;
     }
 }
